@@ -25,9 +25,9 @@ windower outputs specified lookuptables into ouitput file windows.h
 
 Currently supported window types:
 
-gauss
-hanning
-hamming
+gauss,
+hanning,
+hamming,
 more to come ...
 
 
