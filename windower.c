@@ -37,18 +37,20 @@ void OutputWindow(FILE* fp, char* type, int size)
 	{
 		double spread = 0.125;
 		double peak = 0.5;
+        double normFactor = sqrt(2*(M_PI*(spread*spread)));
+        printf("normFactor = %.8f\n", normFactor);
 		fprintf(fp, "static const float %s[%d] =\n{\n" , type, size);
 
         for(int n = 0; n < size; n++)
 		{
 			double index = (double)n/size;
-			double output = exp((-1*(index-peak)*(index-peak))/(2*spread*spread))/(spread*sqrt(2*M_PI));
+			double output = normFactor*(exp((-1*(index-peak)*(index-peak))/(2*spread*spread))/(spread*sqrt(2*M_PI)));
  			fprintf(fp, "\t%.8f,\n", output);
 		}
 
 		fprintf(fp, "};\n\n");
 	}
-    
+
 	else
 	{
 		fprintf(stderr, "no matching window type \"%s\"\n", type);
