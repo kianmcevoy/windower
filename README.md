@@ -11,7 +11,7 @@ gcc windower.c windower -lm
 
 To run...
 
-./windower <windowType> <windowSize>
+./windower {windowType} {windowSize}
 
 
 
