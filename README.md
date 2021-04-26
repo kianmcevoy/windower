@@ -5,8 +5,7 @@ command line tool for generating lookup tables
 
 To build:
 
-gcc windower.c -o windower -lm
-
+cd into directory and type make
 
 
 To run:
