@@ -19,8 +19,8 @@ void OutputWindow(FILE* fp, char* type, int size)
 
 		fprintf(fp, "};\n\n");
 	}
-	else
-	if (strcmp(type, "hanning") == 0)
+
+	else if (strcmp(type, "hanning") == 0)
 	{
 		fprintf(fp, "static const float %s[%d] =\n{\n" , type, size);
        
@@ -32,8 +32,8 @@ void OutputWindow(FILE* fp, char* type, int size)
 
 		fprintf(fp, "};\n\n");
 	}
-	else
-	if (strcmp(type, "gauss") == 0)
+
+	else if (strcmp(type, "gauss") == 0)
 	{
 		double spread = 0.125;
 		double peak = 0.5;
@@ -48,6 +48,7 @@ void OutputWindow(FILE* fp, char* type, int size)
 
 		fprintf(fp, "};\n\n");
 	}
+    
 	else
 	{
 		fprintf(stderr, "no matching window type \"%s\"\n", type);
