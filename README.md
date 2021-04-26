@@ -27,6 +27,9 @@ Currently supported window types:
 gauss,
 hanning,
 hamming,
+hann,
+blackman,
+blackman-harris,
 more to come ...
 
 
