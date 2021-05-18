@@ -30,9 +30,9 @@ hamming,
 hann,
 blackman,
 blackman-harris,
-rampUp
-rampDown
-triangle
+rampUp,
+rampDown,
+triangle,
 more to come ...
 
 
