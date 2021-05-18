@@ -136,6 +136,32 @@ void OutputWindow(FILE* fp, char* type, int size)
 		fprintf(fp, "};\n\n");
 	}
 
+	else if (strcmp(type, "rectangle") == 0)
+	{
+		fprintf(fp, "static const float %s[%d] =\n{\n" , type, size);
+       
+		for(int n = 0; n < 1; n++)
+		{
+			double output = 0;
+			fprintf(fp, "\t%.8f,\n", output);
+		}
+
+        for(int n = 1; n < (size-1); n++)
+		{
+			double output = 1;
+			fprintf(fp, "\t%.8f,\n", output);
+		}
+
+		for(int n = (size -1); n < size; n++)
+		{
+			double output = 0;
+			fprintf(fp, "\t%.8f,\n", output);
+		}
+		
+
+		fprintf(fp, "};\n\n");
+	}
+
 
 
 	else

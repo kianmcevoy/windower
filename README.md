@@ -33,6 +33,7 @@ blackman-harris,
 rampUp,
 rampDown,
 triangle,
+rectangle,
 more to come ...
 
 
