@@ -78,7 +78,7 @@ void OutputWindow(FILE* fp, char* type, int size)
 		fprintf(fp, "};\n\n");
 	}
 
-    else if (strcmp(type, "blackman-harris") == 0)
+    else if (strcmp(type, "blackmanHarris") == 0)
 	{
 		fprintf(fp, "static const float %s[%d] =\n{\n" , type, size);
        
@@ -91,6 +91,52 @@ void OutputWindow(FILE* fp, char* type, int size)
 
 		fprintf(fp, "};\n\n");
 	}
+
+	else if (strcmp(type, "rampUp") == 0)
+	{
+		fprintf(fp, "static const float %s[%d] =\n{\n" , type, size);
+       
+        for(int n = 0; n < size; n++)
+		{
+			double output = ((double)n / size);
+			fprintf(fp, "\t%.8f,\n", output);
+		}
+
+		fprintf(fp, "};\n\n");
+	}
+
+	else if (strcmp(type, "rampDown") == 0)
+	{
+		fprintf(fp, "static const float %s[%d] =\n{\n" , type, size);
+       
+        for(int n = 0; n < size; n++)
+		{
+			double output = 1.0f-((double)n / size);
+			fprintf(fp, "\t%.8f,\n", output);
+		}
+
+		fprintf(fp, "};\n\n");
+	}
+
+	else if (strcmp(type, "triangle") == 0)
+	{
+		fprintf(fp, "static const float %s[%d] =\n{\n" , type, size);
+       
+        for(int n = 0; n < (size/2); n++)
+		{
+			double output = (double)n/(size/2);
+			fprintf(fp, "\t%.8f,\n", output);
+		}
+		for(int n = (size/2); n < size; n++)
+		{
+			double output = 1.0f - ((double)n-(size/2))/(size/2);
+			fprintf(fp, "\t%.8f,\n", output);
+		}
+
+		fprintf(fp, "};\n\n");
+	}
+
+
 
 	else
 	{
