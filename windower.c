@@ -33,6 +33,25 @@ void OutputWindow(FILE* fp, char* type, int size)
 		fprintf(fp, "};\n\n");
 	}
 
+	else if (strcmp(type, "sine") == 0)
+	{
+		fprintf(fp, "static const float %s[%d] =\n{\n" , type, size);
+       
+        for(int n = 0; n < (size/2); n++)
+		{
+			double output = sin((double)n/(size/2));
+			fprintf(fp, "\t%.8f,\n", output);
+		}
+		for(int n = (size/2); n < size; n++)
+		{
+			double output = sin(1.0f - ((double)n-(size/2))/(size/2));
+			fprintf(fp, "\t%.8f,\n", output);
+		}
+
+
+		fprintf(fp, "};\n\n");
+	}
+
     else if (strcmp(type, "hann") == 0)
 	{
 		fprintf(fp, "static const float %s[%d] =\n{\n" , type, size);
