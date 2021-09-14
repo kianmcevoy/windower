@@ -37,17 +37,12 @@ void OutputWindow(FILE* fp, char* type, int size)
 	{
 		fprintf(fp, "static const float %s[%d] =\n{\n" , type, size);
        
-        for(int n = 0; n < (size/2); n++)
+        for(int n = 0; n < size; n++)
 		{
-			double output = sin((double)n/(size/2));
+			double phase = (float)n/(float)size;
+			double output = ((((cos(2*M_PI*phase)) * 0.5) + 0.5)* -1.f) + 1;
 			fprintf(fp, "\t%.8f,\n", output);
 		}
-		for(int n = (size/2); n < size; n++)
-		{
-			double output = sin(1.0f - ((double)n-(size/2))/(size/2));
-			fprintf(fp, "\t%.8f,\n", output);
-		}
-
 
 		fprintf(fp, "};\n\n");
 	}
